@@ -7,13 +7,13 @@ exports.listDatabases = async function (client) {
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
-exports.createTask = async function (client, db, collection, newTask) {
-    const result = await client.db(db).collection(collection).insertOne(newTask);
+exports.createPost = async function (client, db, collection, newPost) {
+    const result = await client.db(db).collection(collection).insertOne(newPost);
     console.log(`New blog post created with the following id: ${result.insertedId}`);
 };
 
-exports.findAllPostsByTitle = async function (client, db, collection, title) {
-    let result = await client.db(db).collection(collection).find({ title: title }).toArray();
+exports.findAllPosts = async function (client, db, collection) {
+    let result = await client.db(db).collection(collection).find().toArray();
     return result
 };
 
